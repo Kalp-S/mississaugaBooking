@@ -11,7 +11,10 @@ def main(args):
     
     while(True):
         check = datetime.datetime.now()
-        if((((int(check.weekday())==1 or int(check.weekday())==2) and int(check.hour) >= 6 and int(check.minute) >=1) and (not flagTue)) or (int(check.weekday())==4 and int(check.hour)>=6 and int(check.minute)>=1 and (not flagFri)) or (((int(check.weekday())==5 or int(check.weekday())==6) and int(check.hour)>=6 and int(check.minute)>=1)  and (not flagSat))):
+        check_tuesday = ((int(check.weekday())==1 or int(check.weekday())==2) and int(check.hour) >= 6 and int(check.minute) >=1) and (not flagTue)
+        check_friday = (int(check.weekday())==4 and int(check.hour)>=6 and int(check.minute)>=1 and (not flagFri))
+        check_saturday = ((int(check.weekday())==5 or int(check.weekday())==6) and int(check.hour)>=6 and int(check.minute)>=1)  and (not flagSat)
+        if(check_tuesday or check_friday or check_saturday):
             if (((int(check.weekday())==1 or int(check.weekday())==2) and int(check.hour) >= 6 and int(check.minute) >=1) or ((int(check.weekday())==5 or int(check.weekday())==6) and int(check.hour)>=6 and int(check.minute)>=1)):
                 arg3 = "https://activemississauga.ca/#!registered-programs?search=2020%20badminton%20river%20grove"
                 print "running sat or tue"
