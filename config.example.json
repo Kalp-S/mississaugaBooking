@@ -1,0 +1,16 @@
+{
+  "accounts": [
+    {
+      "clientBarcode": "YOUR_CLIENT_BARCODE_HERE",
+      "accountPin": "YOUR_ACCOUNT_PIN_HERE"
+    }
+  ],
+  "locations": {
+    "riverGrove": "https://activemississauga.ca/#!registered-programs?search=2020%20badminton%20river%20grove",
+    "mississaugaValley": "https://activemississauga.ca/#!registered-programs?search=2020%20badminton%20mississauga%20valley"
+  },
+  "options": {
+    "headless": true,
+    "chromedriverPath": "/usr/bin/chromedriver"
+  }
+}
