@@ -1,0 +1,38 @@
+name: CI / Test Suite
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python Syntax & Script Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt || true
+
+      - name: Validate Python Scripts
+        run: python3 -m py_compile automate.py script.py topLevel.py
+
+  ci-success:
+    name: CI Test Suite Pass
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gate Check
+        run: echo "Automation script validation passed."
